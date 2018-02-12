@@ -4816,17 +4816,17 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-ts-config-mobiquity-core@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/ts-config-mobiquity-core/-/ts-config-mobiquity-core-0.0.4.tgz#1241fa9b226f5b64ba66a191e36191fc04cfe516"
+ts-config-mobiquity-core@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/ts-config-mobiquity-core/-/ts-config-mobiquity-core-0.0.9.tgz#d7ca58834472f638fc91b977abb7ba64b839f517"
   dependencies:
     tslint-config-airbnb "^5.6.0"
 
-ts-config-mobiquity-react-native@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/ts-config-mobiquity-react-native/-/ts-config-mobiquity-react-native-0.0.4.tgz#dda64b3f8d0a6512f0704c9901d284243e7d483d"
+ts-config-mobiquity-react-native@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/ts-config-mobiquity-react-native/-/ts-config-mobiquity-react-native-0.0.10.tgz#caa05927ce2e7b81ae681f72bf312636946a96e0"
   dependencies:
-    ts-config-mobiquity-core "^0.0.4"
+    ts-config-mobiquity-core "^0.0.9"
     tslint-react "^3.4.0"
 
 ts-jest@^22.0.3:
