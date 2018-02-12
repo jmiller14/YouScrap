@@ -3,11 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start --reset-cache",
-    "bundle:android": "react-native bundle --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res --reset-cache --platform android --dev false",
     "precommit": "lint-staged",
     "test": "tsc --project tsconfig.test.json && tslint --project tsconfig.test.json && jest",
-    "lint": "tslint --project tsconfig.json"
+    "lint": "tslint --project tsconfig.test.json"
   },
   "dependencies": {
     "react": "16.2.0",

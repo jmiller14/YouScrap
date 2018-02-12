@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import * as React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
@@ -17,7 +11,7 @@ Shake or press menu button for dev menu`,
 });
 
 type Props = {};
-export default class App extends React.Component<Props> {
+export class App extends React.Component<Props> {
   render() {
     return (
       <View style={styles.container}>
