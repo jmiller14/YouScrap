@@ -1,4 +1,4 @@
-package com.rnts3;
+package com.youscrap;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "rnts3";
+        return "youscrap";
     }
 }

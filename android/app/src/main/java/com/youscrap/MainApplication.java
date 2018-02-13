@@ -1,4 +1,4 @@
-package com.rnts3;
+package com.youscrap;
 
 import android.app.Application;
 
