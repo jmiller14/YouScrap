@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { observe, IObjectChange } from 'mobx';
+import { observe } from 'mobx';
 
 import { registerScreens } from './screens';
 import { store, hydrateStore } from './stores';
