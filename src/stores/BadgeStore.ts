@@ -7,5 +7,3 @@ export class BadgeStore {
   @observable
   badges = [];
 }
-
-export const badgeStore = new BadgeStore();

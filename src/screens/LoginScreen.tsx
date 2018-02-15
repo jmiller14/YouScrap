@@ -1,20 +1,38 @@
 import * as React from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import * as SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { inject } from 'mobx-react/native';
 
 import { AccountStore } from 'src/stores/AccountStore';
 
-const Icon = SimpleLineIcons;
+const Icon = SimpleLineIcons.default;
+
 type Props = {
   accountStore: AccountStore;
 };
 
+type State = {
+  username: string;
+  password: string;
+};
+
 @inject('accountStore')
-export class LoginScreen extends React.Component<Props> {
+export class LoginScreen extends React.Component<Props, State> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+    };
+  }
+
   loginPress = () => {
-    this.props.accountStore.logIn('username', 'password');
+    this.props.accountStore.logIn(this.state.username, this.state.password);
   };
+
+  usernameChanged = username => this.setState({ username });
+
+  passwordChanged = password => this.setState({ password });
 
   render() {
     return (
@@ -25,6 +43,8 @@ export class LoginScreen extends React.Component<Props> {
           </View>
 
           <TextInput
+            value={this.state.username}
+            onChangeText={this.usernameChanged}
             style={styles.inputField}
             placeholder="Username"
             underlineColorAndroid="transparent"
@@ -37,13 +57,15 @@ export class LoginScreen extends React.Component<Props> {
           </View>
 
           <TextInput
+            value={this.state.password}
+            onChangeText={this.passwordChanged}
             style={styles.inputField}
             placeholder="Password"
             underlineColorAndroid="transparent"
           />
         </View>
 
-        <Button title={'Log in'} onPress={this.loginPress} />
+        <Button title="Log in" onPress={this.loginPress} />
       </View>
     );
   }

@@ -5,6 +5,7 @@ export class AccountStore {
   @persist
   @observable
   isLoggedIn = false;
+
   @persist
   @observable
   username: string = null;

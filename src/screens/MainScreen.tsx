@@ -1,29 +1,32 @@
 import * as React from 'react';
-import { inject } from 'mobx-react/native';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import { Navigator } from 'react-native-navigation';
+import { inject, observer, Observer } from 'mobx-react/native';
+import { StyleSheet, View, FlatList, Button } from 'react-native';
 
 import { AccountStore } from 'src/stores/AccountStore';
-import { BadgeStore } from 'src/stores/BadgeStore';
 import { BookStore } from 'src/stores/BookStore';
+import { BookListItem } from 'src/components/BookListItem';
 
 type Props = {
   accountStore: AccountStore;
-  badgeStore: BadgeStore;
   bookStore: BookStore;
-  navigator: Navigator;
 };
 
-@inject('accountStore', 'badgeStore', 'bookStore')
+@inject('accountStore', 'bookStore')
+@observer
 export class MainScreen extends React.Component<Props> {
   logoutPress = () => {
     this.props.accountStore.logOut();
   };
 
+  renderBookListItem = book => <BookListItem book={book} />;
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Hello</Text>
+        <FlatList
+          data={this.props.bookStore.books}
+          renderItem={this.renderBookListItem}
+        />
 
         <Button title={'Log out'} onPress={this.logoutPress} />
       </View>

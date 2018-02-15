@@ -7,5 +7,3 @@ export class BookStore {
   @observable
   books = [];
 }
-
-export const bookStore = new BookStore();

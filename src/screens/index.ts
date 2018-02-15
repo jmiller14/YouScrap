@@ -10,6 +10,7 @@ export function registerScreens(store: {}, Provider: {}) {
     store,
     Provider,
   );
+
   Navigation.registerComponent(
     'youscrap.LoginScreen',
     () => LoginScreen,

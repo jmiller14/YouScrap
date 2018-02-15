@@ -5,6 +5,7 @@ export class Badge {
   @persist
   @observable
   title: string = null;
+
   @persist
   @observable
   description: string = null;

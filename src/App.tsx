@@ -4,10 +4,10 @@ import { Navigation } from 'react-native-navigation';
 import { observe } from 'mobx';
 
 import { registerScreens } from './screens';
-import { store, hydrateStore } from './stores';
+import { stores, hydrateStore } from './stores';
 import { MobxRnnProvider } from './utils/MobxRnnProvider';
 
-registerScreens(store, MobxRnnProvider);
+registerScreens(stores, MobxRnnProvider);
 
 type Props = {};
 
@@ -15,21 +15,27 @@ export class App extends React.Component<Props> {
   constructor(props) {
     super(props);
 
-    // initial startup of app after data hydration
+    // initial startup of app occurs after data hydration
     hydrateStore().then(() => this.start(true));
-
-    // switch screens on login status change
-    observe(store.accountStore, 'isLoggedIn', () => this.start(false));
   }
 
   start = (isInitialStart: boolean) => {
     const INITIAL_ANIMATION_TYPE = Platform.OS === 'ios' ? 'none' : 'fade';
 
-    if (store.accountStore.isLoggedIn) {
+    if (isInitialStart) {
+      // switch screens on login status change
+      observe(stores.accountStore, 'isLoggedIn', change => {
+        if (change.newValue !== change.oldValue) {
+          this.start(false);
+        }
+      });
+    }
+
+    if (stores.accountStore.isLoggedIn) {
       Navigation.startSingleScreenApp({
         screen: {
           screen: 'youscrap.MainScreen',
-          title: 'YouScrap',
+          title: 'Dashboard',
           navigatorStyle: {},
           navigatorButtons: {},
         },
