@@ -5,5 +5,5 @@ import { Badge } from './models/Badge';
 export class BadgeStore {
   @persist('list', Badge)
   @observable
-  badges = [];
+  badges: Badge[] = [];
 }

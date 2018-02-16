@@ -4,9 +4,13 @@ import { persist } from 'mobx-persist';
 export class Book {
   @persist
   @observable
-  public title: string = null;
+  id: string = null;
 
   @persist
   @observable
-  public items: string[] = [];
+  title: string = null;
+
+  @persist
+  @observable
+  items: string[] = [];
 }

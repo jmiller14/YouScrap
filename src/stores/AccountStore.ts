@@ -4,7 +4,7 @@ import { persist } from 'mobx-persist';
 export class AccountStore {
   @persist
   @observable
-  isLoggedIn = false;
+  isLoggedIn: boolean = null;
 
   @persist
   @observable

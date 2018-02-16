@@ -16,7 +16,9 @@ export class App extends React.Component<Props> {
     super(props);
 
     // initial startup of app occurs after data hydration
-    hydrateStore().then(() => this.start(true));
+    hydrateStore()
+      .then(() => this.start(true))
+      .catch(err => console.error(err));
   }
 
   start = (isInitialStart: boolean) => {
@@ -37,7 +39,6 @@ export class App extends React.Component<Props> {
           screen: 'youscrap.MainScreen',
           title: 'Dashboard',
           navigatorStyle: {},
-          navigatorButtons: {},
         },
         animationType: isInitialStart ? INITIAL_ANIMATION_TYPE : 'slide-down',
       });
