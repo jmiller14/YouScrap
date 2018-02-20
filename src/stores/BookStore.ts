@@ -20,4 +20,9 @@ export class BookStore {
 
     this.books.set(id, book);
   };
+
+  @action
+  removeBook = id => {
+    this.books.delete(id);
+  };
 }

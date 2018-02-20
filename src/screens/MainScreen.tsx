@@ -16,6 +16,8 @@ type Props = {
 @inject('accountStore', 'bookStore')
 @observer
 export class MainScreen extends React.Component<Props> {
+  private listInfo = { shouldAnimate: false };
+
   constructor(props) {
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -24,6 +26,7 @@ export class MainScreen extends React.Component<Props> {
   onNavigatorEvent(event) {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
+        this.listInfo.shouldAnimate = true;
         this.props.bookStore.addBook('New book');
       }
 
@@ -33,10 +36,21 @@ export class MainScreen extends React.Component<Props> {
     }
   }
 
+  removeBook = book => {
+    this.props.bookStore.removeBook(book.id);
+  };
+
   renderBookListItem = ({ item }) => {
     return (
       <Observer>
-        {() => <BookListItem book={item} navigator={this.props.navigator} />}
+        {() => (
+          <BookListItem
+            book={item}
+            navigator={this.props.navigator}
+            onRemove={this.removeBook}
+            listInfo={this.listInfo}
+          />
+        )}
       </Observer>
     );
   };

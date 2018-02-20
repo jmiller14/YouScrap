@@ -26,19 +26,6 @@ type Props = {
 export class BookDetailsScreen extends React.Component<Props> {
   static navigatorButtons = { rightButtons: [] };
 
-  constructor(props) {
-    super(props);
-    BookDetailsScreen.navigatorButtons.rightButtons =
-      Platform.OS === 'ios'
-        ? [
-          {
-            id: 'add',
-            icon: icons.addIcon,
-          },
-        ]
-        : [];
-  }
-
   renderBookListItem = ({ item }) => {
     // return <Observer>{() => <BookListItem book={item} />}</Observer>;
   };
