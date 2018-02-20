@@ -16,22 +16,6 @@ type Props = {
 @inject('accountStore', 'bookStore')
 @observer
 export class MainScreen extends React.Component<Props> {
-  static navigatorButtons = {
-    leftButtons: [
-      {
-        title: 'Log out',
-        id: 'logout',
-      },
-    ],
-
-    rightButtons: [
-      {
-        title: 'Add',
-        id: 'add',
-      },
-    ],
-  };
-
   constructor(props) {
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -43,17 +27,21 @@ export class MainScreen extends React.Component<Props> {
         this.props.bookStore.addBook('New book');
       }
 
-      if (event.id === 'logout') {
+      if (event.id === 'cancel') {
         this.props.accountStore.logOut();
       }
     }
   }
 
   renderBookListItem = ({ item }) => {
-    return <Observer>{() => <BookListItem book={item} />}</Observer>;
+    return (
+      <Observer>
+        {() => <BookListItem book={item} navigator={this.props.navigator} />}
+      </Observer>
+    );
   };
 
-  bookListKeyExtractor = ({}, index) => String(index);
+  bookListKeyExtractor = item => item.id;
 
   render() {
     return (
@@ -72,12 +60,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    alignItems: 'stretch',
+    paddingBottom: 5,
   },
 });

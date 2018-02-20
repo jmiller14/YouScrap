@@ -6,8 +6,8 @@ import { observe } from 'mobx';
 import { registerScreens } from './screens';
 import { stores, hydrateStore } from './stores';
 import { MobxRnnProvider } from './utils/MobxRnnProvider';
-
-registerScreens(stores, MobxRnnProvider);
+import { icons } from './components/Icons';
+import { getPlatformAddButton } from 'src/utils/getPlatformAddButton';
 
 type Props = {};
 
@@ -15,8 +15,8 @@ export class App extends React.Component<Props> {
   constructor(props) {
     super(props);
 
-    // initial startup of app occurs after data hydration
-    hydrateStore()
+    // initial startup of app occurs after data hydration and loading of icons
+    Promise.all([hydrateStore(), icons.loadIcons])
       .then(() => this.start(true))
       .catch(err => console.error(err));
   }
@@ -25,6 +25,8 @@ export class App extends React.Component<Props> {
     const INITIAL_ANIMATION_TYPE = Platform.OS === 'ios' ? 'none' : 'fade';
 
     if (isInitialStart) {
+      registerScreens(stores, MobxRnnProvider);
+
       // switch screens on login status change
       observe(stores.accountStore, 'isLoggedIn', change => {
         if (change.newValue !== change.oldValue) {
@@ -39,6 +41,10 @@ export class App extends React.Component<Props> {
           screen: 'youscrap.MainScreen',
           title: 'Dashboard',
           navigatorStyle: {},
+          navigatorButtons: {
+            ...getPlatformAddButton(),
+            leftButtons: [{ title: 'Log out', id: 'cancel' }],
+          },
         },
         animationType: isInitialStart ? INITIAL_ANIMATION_TYPE : 'slide-down',
       });

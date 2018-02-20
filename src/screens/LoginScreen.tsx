@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
-import * as SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import * as Ionicons from 'react-native-vector-icons/Ionicons';
 import { inject } from 'mobx-react/native';
 
 import { AccountStore } from 'src/stores/AccountStore';
+import { icons } from 'src/components/Icons';
 
-const Icon = SimpleLineIcons.default;
+const Icon = Ionicons.default;
 
 type Props = {
   accountStore: AccountStore;
@@ -39,7 +40,7 @@ export class LoginScreen extends React.Component<Props, State> {
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <View style={styles.inputIconContainer}>
-            <Icon name="user" style={styles.inputIcon} />
+            <Icon name={`${icons.prefix}-person`} style={styles.inputIcon} />
           </View>
 
           <TextInput
@@ -53,7 +54,7 @@ export class LoginScreen extends React.Component<Props, State> {
 
         <View style={styles.inputContainer}>
           <View style={styles.inputIconContainer}>
-            <Icon name="lock" style={styles.inputIcon} />
+            <Icon name={`${icons.prefix}-lock`} style={styles.inputIcon} />
           </View>
 
           <TextInput
