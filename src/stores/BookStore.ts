@@ -16,7 +16,7 @@ export class BookStore {
 
     book.id = id;
     book.title = title;
-    book.items = [];
+    book.items = observable.map({});
 
     this.books.set(id, book);
   };
@@ -24,5 +24,11 @@ export class BookStore {
   @action
   removeBook = id => {
     this.books.delete(id);
+  };
+
+  @action
+  addItemToBook = (book: Book) => {
+    const id = v4();
+    book.items.set(id, `https://picsum.photos/300/300/?random#${id}`);
   };
 }

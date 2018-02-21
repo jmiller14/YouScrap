@@ -54,7 +54,7 @@ export class BookListItem extends React.Component<Props> {
   }
 
   onPress = () => {
-    this.props.listInfo.shouldAnimate = true;
+    /* this.props.listInfo.shouldAnimate = true;
     this.forceUpdate(); // force re-render so that initial remove animation occurs
 
     Animated.timing(this.animated, {
@@ -62,14 +62,14 @@ export class BookListItem extends React.Component<Props> {
       duration: ANIMATION_DURATION,
     }).start(() => {
       this.props.onRemove(this.props.book);
-    });
+    }); */
 
-    /* this.props.navigator.push({
+    this.props.navigator.push({
       screen: 'youscrap.BookDetailsScreen',
       title: 'Details',
       passProps: { book: this.props.book },
       navigatorButtons: getPlatformAddButton(),
-    }); */
+    });
   };
 
   render() {
@@ -86,7 +86,7 @@ export class BookListItem extends React.Component<Props> {
             <Text style={styles.title}>{this.props.book.title}</Text>
 
             <Text style={styles.detail}>
-              ({this.props.book.items.length} items)
+              ({this.props.book.items.size} items)
             </Text>
           </View>
         </Animated.View>

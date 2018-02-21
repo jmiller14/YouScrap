@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, ObservableMap } from 'mobx';
 import { persist } from 'mobx-persist';
 
 export class Book {
@@ -12,5 +12,5 @@ export class Book {
 
   @persist
   @observable
-  items: string[] = [];
+  items: ObservableMap<string> = observable.map({});
 }
