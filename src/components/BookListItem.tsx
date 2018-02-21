@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Navigator } from 'react-native-navigation';
 
-import { Book } from 'src/stores/models/Book';
+import { Book } from 'src/store/books/Book';
 import { getPlatformAddButton } from 'src/utils/getPlatformAddButton';
 
 type Props = {
@@ -86,7 +86,7 @@ export class BookListItem extends React.Component<Props> {
             <Text style={styles.title}>{this.props.book.title}</Text>
 
             <Text style={styles.detail}>
-              ({this.props.book.items.size} items)
+              ({this.props.book.items.length} items)
             </Text>
           </View>
         </Animated.View>

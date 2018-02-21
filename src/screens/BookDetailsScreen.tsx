@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { inject, observer } from 'mobx-react/native';
 import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
 import { Navigator } from 'react-native-navigation';
 import * as Ionicons from 'react-native-vector-icons/Ionicons';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 
-import { Book } from 'src/stores/models/Book';
-import { BookStore } from 'src/stores/BookStore';
+import { Action } from 'src/store/root';
+import { State } from 'src/store/state';
+import { Book } from 'src/store/books/Book';
+import { addItemToBook } from 'src/store/books/actions';
 import { icons } from 'src/components/Icons';
 
 const Icon = Ionicons.default;
@@ -13,17 +16,18 @@ const Icon = Ionicons.default;
 type Props = {
   book: Book;
   navigator: Navigator;
-  bookStore: BookStore;
+  addItemToBook: (imageUri: string) => Action;
 };
 
-type State = {
+type ComponentState = {
   width: number;
   height: number;
 };
 
-@inject('bookStore')
-@observer
-export class BookDetailsScreen extends React.Component<Props, State> {
+class BookDetailsScreenComponent extends React.Component<
+  Props,
+  ComponentState
+> {
   static navigatorButtons = { rightButtons: [] };
 
   constructor(props) {
@@ -34,7 +38,9 @@ export class BookDetailsScreen extends React.Component<Props, State> {
 
   onNavigatorEvent(event) {
     if (event.type === 'NavBarButtonPress' && event.id === 'add') {
-      this.props.bookStore.addItemToBook(this.props.book);
+      this.props.addItemToBook(
+        `https://picsum.photos/200/300/?random#${Math.random()}`,
+      );
     }
   }
 
@@ -64,26 +70,23 @@ export class BookDetailsScreen extends React.Component<Props, State> {
 
     return (
       <View style={styles.container}>
-        {this.props.book.items
-          .values()
-          .slice()
-          .map((item, index) => (
-            <View
-              key={index}
-              style={[
-                styles.itemContainer,
-                { width: width / itemsPerRow, height: width / itemsPerRow },
-              ]}
-            >
-              <Image
-                source={{ uri: item }}
-                style={{
-                  width: width / itemsPerRow,
-                  height: width / itemsPerRow,
-                }}
-              />
-            </View>
-          ))}
+        {this.props.book.items.map((item, index) => (
+          <View
+            key={index}
+            style={[
+              styles.itemContainer,
+              { width: width / itemsPerRow, height: width / itemsPerRow },
+            ]}
+          >
+            <Image
+              source={{ uri: item.imageUri }}
+              style={{
+                width: width / itemsPerRow,
+                height: width / itemsPerRow,
+              }}
+            />
+          </View>
+        ))}
       </View>
     );
   };
@@ -99,7 +102,7 @@ export class BookDetailsScreen extends React.Component<Props, State> {
   );
 
   render() {
-    return this.props.book.items.size === 0
+    return this.props.book.items.length === 0
       ? this.renderZeroLayout()
       : this.renderNormalLayout();
   }
@@ -155,3 +158,14 @@ const styles = StyleSheet.create({
     padding: 0,
   },
 });
+
+export const BookDetailsScreen = connect(
+  (state: State, ownProps: Props) => ({
+    book: state.books.collection.find(book => book.id === ownProps.book.id),
+  }),
+
+  (dispatch: Dispatch<Action>, ownProps: Props) => ({
+    addItemToBook: (imageUri: string) =>
+      dispatch(addItemToBook(ownProps.book.id, imageUri)),
+  }),
+)(BookDetailsScreenComponent);

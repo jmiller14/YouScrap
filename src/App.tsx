@@ -1,41 +1,45 @@
 import * as React from 'react';
 import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { observe } from 'mobx';
+import { Provider } from 'react-redux';
 
 import { registerScreens } from './screens';
-import { stores, hydrateStore } from './stores';
-import { MobxRnnProvider } from './utils/MobxRnnProvider';
+import { configureStore } from './store/configureStore';
 import { icons } from './components/Icons';
+import { State, initialState } from './store/state';
 import { getPlatformAddButton } from 'src/utils/getPlatformAddButton';
 
 type Props = {};
 
+const store = configureStore(initialState);
+registerScreens(store, Provider);
+
 export class App extends React.Component<Props> {
+  private isLoggedIn = false;
+
   constructor(props) {
     super(props);
 
-    // initial startup of app occurs after data hydration and loading of icons
-    Promise.all([hydrateStore(), icons.loadIcons])
-      .then(() => this.start(true))
-      .catch(err => console.error(err));
+    // initial startup of app occurs after icons load
+    icons.loadIcons.catch(err => console.error(err)).then(() => {
+      this.start(true, this.isLoggedIn);
+
+      store.subscribe(() => {
+        const state: State = store.getState();
+
+        if (state.account.isLoggedIn !== this.isLoggedIn) {
+          this.start(false, state.account.isLoggedIn);
+        }
+
+        this.isLoggedIn = state.account.isLoggedIn;
+      });
+    });
   }
 
-  start = (isInitialStart: boolean) => {
+  start = (isInitialStart: boolean, isLoggedIn: boolean) => {
     const INITIAL_ANIMATION_TYPE = Platform.OS === 'ios' ? 'none' : 'fade';
 
-    if (isInitialStart) {
-      registerScreens(stores, MobxRnnProvider);
-
-      // switch screens on login status change
-      observe(stores.accountStore, 'isLoggedIn', change => {
-        if (change.newValue !== change.oldValue) {
-          this.start(false);
-        }
-      });
-    }
-
-    if (stores.accountStore.isLoggedIn) {
+    if (isLoggedIn) {
       Navigation.startSingleScreenApp({
         screen: {
           screen: 'youscrap.MainScreen',

@@ -1,21 +1,25 @@
 import * as React from 'react';
-import { inject, observer, Observer } from 'mobx-react/native';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Navigator } from 'react-native-navigation';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 
-import { AccountStore } from 'src/stores/AccountStore';
-import { BookStore } from 'src/stores/BookStore';
+import { Action } from 'src/store/root';
+import { State } from 'src/store/state';
+import { logOut } from 'src/store/account/actions';
+import { addBook } from 'src/store/books/actions';
+import { Book } from 'src/store/books/Book';
 import { BookListItem } from 'src/components/BookListItem';
 
 type Props = {
-  accountStore: AccountStore;
-  bookStore: BookStore;
+  isLoading: boolean;
+  books: Book[];
   navigator: Navigator;
+  addBook: (title: string) => Action;
+  logOut: () => Action;
 };
 
-@inject('accountStore', 'bookStore')
-@observer
-export class MainScreen extends React.Component<Props> {
+class MainScreenComponent extends React.Component<Props> {
   private listInfo = { shouldAnimate: false };
 
   constructor(props) {
@@ -27,31 +31,27 @@ export class MainScreen extends React.Component<Props> {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
         this.listInfo.shouldAnimate = true;
-        this.props.bookStore.addBook('New book');
+        this.props.addBook('New book');
       }
 
       if (event.id === 'cancel') {
-        this.props.accountStore.logOut();
+        this.props.logOut();
       }
     }
   }
 
-  removeBook = book => {
-    this.props.bookStore.removeBook(book.id);
+  removeBook = () => {
+    // this.props.bookStore.removeBook(book.id);
   };
 
   renderBookListItem = ({ item }) => {
     return (
-      <Observer>
-        {() => (
-          <BookListItem
-            book={item}
-            navigator={this.props.navigator}
-            onRemove={this.removeBook}
-            listInfo={this.listInfo}
-          />
-        )}
-      </Observer>
+      <BookListItem
+        book={item}
+        navigator={this.props.navigator}
+        onRemove={this.removeBook}
+        listInfo={this.listInfo}
+      />
     );
   };
 
@@ -61,7 +61,7 @@ export class MainScreen extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <FlatList
-          data={this.props.bookStore.books.values().slice()}
+          data={this.props.books}
           renderItem={this.renderBookListItem}
           keyExtractor={this.bookListKeyExtractor}
         />
@@ -78,3 +78,15 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
 });
+
+export const MainScreen = connect(
+  (state: State) => ({
+    isLoading: state.books.isLoading,
+    books: state.books.collection,
+  }),
+
+  (dispatch: Dispatch<Action>) => ({
+    addBook: (title: string) => dispatch(addBook(title)),
+    logOut: () => dispatch(logOut()),
+  }),
+)(MainScreenComponent);

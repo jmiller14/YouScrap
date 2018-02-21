@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 import * as Ionicons from 'react-native-vector-icons/Ionicons';
-import { inject } from 'mobx-react/native';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 
-import { AccountStore } from 'src/stores/AccountStore';
+import { Action } from 'src/store/root';
 import { icons } from 'src/components/Icons';
+import { logIn } from 'src/store/account/actions';
 
 const Icon = Ionicons.default;
 
 type Props = {
-  accountStore: AccountStore;
+  logIn: (username: string, password: string) => Action;
 };
 
 type State = {
@@ -17,8 +19,7 @@ type State = {
   password: string;
 };
 
-@inject('accountStore')
-export class LoginScreen extends React.Component<Props, State> {
+class LoginScreenComponent extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +29,7 @@ export class LoginScreen extends React.Component<Props, State> {
   }
 
   loginPress = () => {
-    this.props.accountStore.logIn(this.state.username, this.state.password);
+    this.props.logIn(this.state.username, this.state.password);
   };
 
   usernameChanged = username => this.setState({ username });
@@ -118,3 +119,12 @@ const styles = StyleSheet.create({
     padding: 0,
   },
 });
+
+export const LoginScreen = connect(
+  () => ({}),
+
+  (dispatch: Dispatch<Action>) => ({
+    logIn: (username: string, password: string) =>
+      dispatch(logIn(username, password)),
+  }),
+)(LoginScreenComponent);
