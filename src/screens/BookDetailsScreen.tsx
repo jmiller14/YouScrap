@@ -39,7 +39,7 @@ class BookDetailsScreenComponent extends React.Component<
   onNavigatorEvent(event) {
     if (event.type === 'NavBarButtonPress' && event.id === 'add') {
       this.props.addItemToBook(
-        `https://picsum.photos/200/300/?random#${Math.random()}`,
+        `https://picsum.photos/300/300/?random#${Math.random()}`,
       );
     }
   }
@@ -75,12 +75,14 @@ class BookDetailsScreenComponent extends React.Component<
             key={index}
             style={[
               styles.itemContainer,
+              index % 2 ? styles.itemContainerOdd : styles.itemContainerEven,
               { width: width / itemsPerRow, height: width / itemsPerRow },
             ]}
           >
             <Image
               source={{ uri: item.imageUri }}
               style={{
+                resizeMode: 'cover',
                 width: width / itemsPerRow,
                 height: width / itemsPerRow,
               }}
@@ -130,6 +132,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  itemContainerOdd: {
+    backgroundColor: '#eee',
+  },
+
+  itemContainerEven: {},
 
   welcome: {
     fontSize: 20,

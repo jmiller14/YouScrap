@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { StyleSheet, View, Image, TextInput, Button } from 'react-native';
 import * as Ionicons from 'react-native-vector-icons/Ionicons';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
@@ -39,6 +39,13 @@ class LoginScreenComponent extends React.Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.backgroundContainer}>
+          <Image
+            source={require('src/assets/images/login-background.jpg')}
+            style={styles.background}
+          />
+        </View>
+
         <View style={styles.inputContainer}>
           <View style={styles.inputIconContainer}>
             <Icon name={`${icons.prefix}-person`} style={styles.inputIcon} />
@@ -49,6 +56,9 @@ class LoginScreenComponent extends React.Component<Props, State> {
             onChangeText={this.usernameChanged}
             style={styles.inputField}
             placeholder="Username"
+            placeholderTextColor="rgba(255, 255, 255, .6)"
+            autoCorrect={false}
+            autoCapitalize="none"
             underlineColorAndroid="transparent"
           />
         </View>
@@ -63,11 +73,17 @@ class LoginScreenComponent extends React.Component<Props, State> {
             onChangeText={this.passwordChanged}
             style={styles.inputField}
             placeholder="Password"
+            placeholderTextColor="rgba(255, 255, 255, .6)"
+            secureTextEntry
+            autoCorrect={false}
+            autoCapitalize="none"
             underlineColorAndroid="transparent"
           />
         </View>
 
-        <Button title="Log in" onPress={this.loginPress} />
+        <View style={styles.buttonContainer}>
+          <Button title="Log in" onPress={this.loginPress} color="white" />
+        </View>
       </View>
     );
   }
@@ -78,6 +94,25 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'stretch',
+    backgroundColor: '#333',
+  },
+
+  backgroundContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
+
+  background: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    opacity: 0.6,
   },
 
   welcome: {
@@ -91,17 +126,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
-    borderColor: 'red',
-    borderWidth: 1,
-    borderRadius: 5,
-    overflow: 'hidden',
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
   },
 
   inputIconContainer: {
     width: 38,
     height: 38,
     marginRight: 10,
-    backgroundColor: 'red',
+    backgroundColor: 'rgba(255, 255, 255, .4)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -117,6 +150,12 @@ const styles = StyleSheet.create({
     height: 38,
     margin: 0,
     padding: 0,
+    color: 'white',
+  },
+
+  buttonContainer: {
+    paddingLeft: 10,
+    paddingRight: 10,
   },
 });
 

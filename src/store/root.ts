@@ -1,6 +1,5 @@
 import { combineReducers, Action as ReduxAction } from 'redux';
 import { combineEpics, Epic } from 'redux-observable';
-import { Observable } from 'rxjs';
 
 import { accountReducer } from './account/reducer';
 import { booksReducer } from './books/reducer';
