@@ -69,6 +69,7 @@ export class BookListItem extends React.Component<Props> {
       title: 'Details',
       passProps: { book: this.props.book },
       navigatorButtons: getPlatformAddButton(),
+      animationType: 'slide-horizontal',
     });
   };
 

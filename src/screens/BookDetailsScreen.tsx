@@ -10,6 +10,7 @@ import { State } from 'src/store/state';
 import { Book } from 'src/store/books/Book';
 import { addItemToBook } from 'src/store/books/actions';
 import { icons } from 'src/components/Icons';
+import { navigatorStyle } from 'src/styles/navigator';
 
 const Icon = Ionicons.default;
 
@@ -29,6 +30,7 @@ class BookDetailsScreenComponent extends React.Component<
   ComponentState
 > {
   static navigatorButtons = { rightButtons: [] };
+  static navigatorStyle = navigatorStyle;
 
   constructor(props) {
     super(props);

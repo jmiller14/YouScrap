@@ -8,18 +8,21 @@ class Icons {
   loadIcons: Promise<string[]>;
 
   addIcon: string;
+  whiteBookIcon: string;
 
   loadIcon(
     iconName: string,
     property: string,
     fontSize = 30,
     useIOSOutline = false,
+    color = 'black',
   ): Promise<string> {
     return Icon.getImageSource(
       `${this.prefix}-${iconName}${
         useIOSOutline && Platform.OS === 'ios' ? '-outline' : ''
       }`,
       fontSize,
+      color,
     )
       .then(source => (this[property] = source))
       .catch(() => ''); // TODO use fallback?
@@ -27,7 +30,10 @@ class Icons {
 
   constructor() {
     this.prefix = Platform.OS === 'ios' ? 'ios' : 'md';
-    this.loadIcons = Promise.all([this.loadIcon('add', 'addIcon')]);
+    this.loadIcons = Promise.all([
+      this.loadIcon('add', 'addIcon'),
+      this.loadIcon('book', 'whiteBookIcon', undefined, undefined, 'white'),
+    ]);
   }
 }
 

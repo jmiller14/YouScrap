@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, TextInput, Button } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 import * as Ionicons from 'react-native-vector-icons/Ionicons';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { Action } from 'src/store/root';
+import { LoginField } from 'src/components/LoginField';
+import { Button } from 'src/components/Button';
 import { icons } from 'src/components/Icons';
 import { logIn } from 'src/store/account/actions';
 
@@ -20,6 +22,10 @@ type State = {
 };
 
 class LoginScreenComponent extends React.Component<Props, State> {
+  static navigatorStyle = {
+    navBarHidden: true,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -46,43 +52,24 @@ class LoginScreenComponent extends React.Component<Props, State> {
           />
         </View>
 
-        <View style={styles.inputContainer}>
-          <View style={styles.inputIconContainer}>
-            <Icon name={`${icons.prefix}-person`} style={styles.inputIcon} />
-          </View>
+        <LoginField
+          value={this.state.username}
+          onChangeText={this.usernameChanged}
+          placeholder="Username"
+          iconName={`${icons.prefix}-person`}
+          isPassword={false}
+        />
 
-          <TextInput
-            value={this.state.username}
-            onChangeText={this.usernameChanged}
-            style={styles.inputField}
-            placeholder="Username"
-            placeholderTextColor="rgba(255, 255, 255, .6)"
-            autoCorrect={false}
-            autoCapitalize="none"
-            underlineColorAndroid="transparent"
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <View style={styles.inputIconContainer}>
-            <Icon name={`${icons.prefix}-lock`} style={styles.inputIcon} />
-          </View>
-
-          <TextInput
-            value={this.state.password}
-            onChangeText={this.passwordChanged}
-            style={styles.inputField}
-            placeholder="Password"
-            placeholderTextColor="rgba(255, 255, 255, .6)"
-            secureTextEntry
-            autoCorrect={false}
-            autoCapitalize="none"
-            underlineColorAndroid="transparent"
-          />
-        </View>
+        <LoginField
+          value={this.state.password}
+          onChangeText={this.passwordChanged}
+          placeholder="Password"
+          iconName={`${icons.prefix}-lock`}
+          isPassword={false}
+        />
 
         <View style={styles.buttonContainer}>
-          <Button title="Log in" onPress={this.loginPress} color="white" />
+          <Button onPress={this.loginPress} title="Log in" />
         </View>
       </View>
     );
@@ -121,41 +108,10 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 
-  inputContainer: {
-    flexDirection: 'row',
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 10,
-    borderBottomColor: 'white',
-    borderBottomWidth: 1,
-  },
-
-  inputIconContainer: {
-    width: 38,
-    height: 38,
-    marginRight: 10,
-    backgroundColor: 'rgba(255, 255, 255, .4)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  inputIcon: {
-    color: 'white',
-    fontSize: 20,
-  },
-
-  inputField: {
-    flex: 1,
-    fontSize: 18,
-    height: 38,
-    margin: 0,
-    padding: 0,
-    color: 'white',
-  },
-
   buttonContainer: {
     paddingLeft: 10,
     paddingRight: 10,
+    alignItems: 'flex-end',
   },
 });
 

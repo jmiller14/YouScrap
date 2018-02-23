@@ -43,12 +43,23 @@ export class App extends React.Component<Props> {
       Navigation.startSingleScreenApp({
         screen: {
           screen: 'youscrap.MainScreen',
-          title: 'Dashboard',
-          navigatorStyle: {},
+          titleImage: icons.whiteBookIcon, // iOS only
+          title: 'Home',
           navigatorButtons: {
             ...getPlatformAddButton(),
             leftButtons: [{ title: 'Log out', id: 'cancel' }],
           },
+          ...Platform.select({
+            // on Android, we fake the title image by drawing it under the navbar
+            android: {
+              navigatorStyle: {
+                drawUnderNavBar: true,
+                navBarTransparent: true,
+                navBarBackgroundColor: 'transparent',
+                navBarTextColor: 'transparent',
+              },
+            },
+          }),
         },
         animationType: isInitialStart ? INITIAL_ANIMATION_TYPE : 'slide-down',
       });
@@ -57,15 +68,9 @@ export class App extends React.Component<Props> {
         screen: {
           screen: 'youscrap.LoginScreen',
           title: 'Log in to YouScrap',
-          navigatorStyle: loginNavigatorStyle,
-          navigatorButtons: {},
         },
         animationType: isInitialStart ? INITIAL_ANIMATION_TYPE : 'slide-down',
       });
     }
   };
 }
-
-const loginNavigatorStyle = {
-  navBarHidden: true,
-};
