@@ -1,4 +1,4 @@
-import { colors } from 'src/colors';
+import { colors } from 'src/vars';
 
 export const navigatorStyle = {
   navBarBackgroundColor: colors.primary,

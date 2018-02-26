@@ -1,15 +1,10 @@
 import * as React from 'react';
-import {
-  Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-  View,
-  Animated,
-} from 'react-native';
+import { Platform, StyleSheet, View, Animated } from 'react-native';
 import { Navigator } from 'react-native-navigation';
 
+import { colors, HAIRLINE_WIDTH } from 'src/vars';
+import { Text } from 'src/components/Text';
+import { Button } from 'src/components/Button';
 import { Book } from 'src/store/books/Book';
 import { getPlatformAddButton } from 'src/utils/getPlatformAddButton';
 
@@ -18,14 +13,11 @@ type Props = {
   navigator: Navigator;
   onRemove: Function;
   listInfo: { shouldAnimate: boolean };
+  style: any;
 };
 
-const Touchable =
-  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-
 const ANIMATION_DURATION = 300;
-const ROW_HEIGHT = 48;
-const ROW_MARGIN = 2;
+const ITEM_PADDING = 10;
 
 export class BookListItem extends React.Component<Props> {
   private animated: Animated.Value;
@@ -37,11 +29,16 @@ export class BookListItem extends React.Component<Props> {
     this.wrapperStyles = [
       styles.wrapper,
       {
-        height: this.animated.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, ROW_HEIGHT + ROW_MARGIN],
-          extrapolate: 'clamp',
-        }),
+        transform: [
+          {
+            scale: this.animated.interpolate({
+              inputRange: [0, 1],
+              outputRange: [1.333, 1],
+              extrapolate: 'clamp',
+            }),
+          },
+        ],
+        opacity: this.animated,
       },
     ];
   }
@@ -75,23 +72,26 @@ export class BookListItem extends React.Component<Props> {
 
   render() {
     return (
-      <Touchable onPress={this.onPress}>
-        <Animated.View
-          style={
-            this.props.listInfo.shouldAnimate
-              ? this.wrapperStyles
-              : styles.wrapper
-          }
-        >
-          <View style={styles.container}>
-            <Text style={styles.title}>{this.props.book.title}</Text>
+      <Animated.View
+        style={[
+          this.props.listInfo.shouldAnimate
+            ? this.wrapperStyles
+            : styles.wrapper,
+          this.props.style,
+        ]}
+      >
+        <View style={styles.container}>
+          <Text style={styles.title}>{this.props.book.title}</Text>
 
-            <Text style={styles.detail}>
-              ({this.props.book.items.length} items)
-            </Text>
+          <Text style={styles.detail}>
+            ({this.props.book.items.length} items)
+          </Text>
+
+          <View style={styles.buttonContainer}>
+            <Button title="Edit" onPress={this.onPress} />
           </View>
-        </Animated.View>
-      </Touchable>
+        </View>
+      </Animated.View>
     );
   }
 }
@@ -101,29 +101,39 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'stretch',
-    overflow: 'hidden',
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 10,
   },
 
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#eee',
-    height: ROW_HEIGHT,
-    marginBottom: ROW_MARGIN,
-    paddingTop: 5,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 5,
+    alignItems: 'flex-start',
+    backgroundColor: colors.white,
+    padding: 10,
+    ...Platform.select({
+      android: {
+        elevation: 10,
+      },
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 2,
+        shadowOpacity: 0.2,
+      },
+    }),
   },
 
   title: {
     fontSize: 20,
-    textAlign: 'left',
   },
 
   detail: {
-    fontSize: 20,
-    textAlign: 'right',
+    fontSize: 14,
+    marginBottom: 10,
+  },
+
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
   },
 });

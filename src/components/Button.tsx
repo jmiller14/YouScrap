@@ -8,7 +8,7 @@ import {
   Text,
 } from 'react-native';
 
-import { colors } from 'src/colors';
+import { colors } from 'src/vars';
 
 const Touchable =
   Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;

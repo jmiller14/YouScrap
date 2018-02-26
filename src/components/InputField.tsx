@@ -1,16 +1,11 @@
 import * as React from 'react';
 import { StyleSheet, View, TextInput, TextInputProperties } from 'react-native';
-import * as Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { colors } from 'src/vars';
 
-const Icon = Ionicons.default;
+interface Props extends TextInputProperties {}
 
-interface Props extends TextInputProperties {
-  iconName: string;
-}
-
-export class LoginField extends React.Component<Props> {
+export class InputField extends React.Component<Props> {
   private input: TextInput;
 
   focus = () => {
@@ -22,20 +17,14 @@ export class LoginField extends React.Component<Props> {
   };
 
   render() {
-    const { iconName, ...attributes } = this.props;
+    const { style, ...attributes } = this.props;
 
     return (
-      <View style={styles.container}>
-        <View style={styles.iconContainer}>
-          <Icon name={iconName} style={styles.icon} />
-        </View>
-
+      <View style={[styles.container, style]}>
         <TextInput
           ref={ref => (this.input = ref as any)}
           style={styles.input}
           placeholderTextColor={colors.gray}
-          autoCorrect={false}
-          autoCapitalize="none"
           underlineColorAndroid="transparent"
           {...attributes}
         />
@@ -47,32 +36,18 @@ export class LoginField extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 10,
-    backgroundColor: colors.white,
-  },
-
-  iconContainer: {
-    width: 40,
-    height: 40,
-    marginRight: 10,
-    backgroundColor: colors.primary,
-    alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  icon: {
-    color: colors.white,
-    fontSize: 30,
+    alignItems: 'center',
+    backgroundColor: colors.white,
+    height: 40,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
 
   input: {
     flex: 1,
     fontSize: 18,
-    height: 38,
+    height: 40,
     margin: 0,
     padding: 0,
     color: colors.grayDark,

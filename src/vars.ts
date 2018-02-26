@@ -1,3 +1,5 @@
+import { PixelRatio } from 'react-native';
+
 export const colors = {
   text: '#422007',
   white: '#fff',
@@ -12,3 +14,5 @@ export const colors = {
   secondaryDark: '#73411c',
   secondaryLight: '#b48b69',
 };
+
+export const HAIRLINE_WIDTH = 1 / PixelRatio.getPixelSizeForLayoutSize(1);

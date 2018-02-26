@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import { Navigator } from 'react-native-navigation';
 import * as Ionicons from 'react-native-vector-icons/Ionicons';
 import { Dispatch } from 'redux';
@@ -11,6 +11,9 @@ import { Book } from 'src/store/books/Book';
 import { addItemToBook } from 'src/store/books/actions';
 import { icons } from 'src/components/Icons';
 import { navigatorStyle } from 'src/styles/navigator';
+import { Image } from 'src/components/Image';
+import { Text } from 'src/components/Text';
+import { colors } from 'src/vars';
 
 const Icon = Ionicons.default;
 
@@ -77,7 +80,6 @@ class BookDetailsScreenComponent extends React.Component<
             key={index}
             style={[
               styles.itemContainer,
-              index % 2 ? styles.itemContainerOdd : styles.itemContainerEven,
               { width: width / itemsPerRow, height: width / itemsPerRow },
             ]}
           >
@@ -115,9 +117,10 @@ class BookDetailsScreenComponent extends React.Component<
 const styles = StyleSheet.create({
   zeroContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#ddd',
+    padding: 20,
+    backgroundColor: colors.white,
   },
 
   zeroText: {},
@@ -128,23 +131,12 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+    backgroundColor: colors.white,
   },
 
   itemContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-
-  itemContainerOdd: {
-    backgroundColor: '#eee',
-  },
-
-  itemContainerEven: {},
-
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
   },
 
   addButtonContainer: {

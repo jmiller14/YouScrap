@@ -4218,7 +4218,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@15.6.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -4314,6 +4314,19 @@ react-devtools@^3.1.0:
     minimist "^1.2.0"
     react-devtools-core "^3.1.0"
     update-notifier "^2.1.0"
+
+react-native-animatable@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.4.tgz#b5fb7657e8f6edadbc26697057a327fb920b3039"
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-modal@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-5.0.1.tgz#469f83048de76121e043820af864cb4a6330661f"
+  dependencies:
+    prop-types "15.6.0"
+    react-native-animatable "^1.2.4"
 
 react-native-navigation@^1.1.377:
   version "1.1.384"

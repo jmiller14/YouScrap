@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import {
+  StyleSheet,
+  KeyboardAvoidingView,
+  View,
+  TextInputStatic,
+} from 'react-native';
 import * as Ionicons from 'react-native-vector-icons/Ionicons';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
@@ -7,8 +12,10 @@ import { connect } from 'react-redux';
 import { Action } from 'src/store/root';
 import { LoginField } from 'src/components/LoginField';
 import { Button } from 'src/components/Button';
+import { Image } from 'src/components/Image';
 import { icons } from 'src/components/Icons';
 import { logIn } from 'src/store/account/actions';
+import { colors } from 'src/vars';
 
 const Icon = Ionicons.default;
 
@@ -26,6 +33,9 @@ class LoginScreenComponent extends React.Component<Props, State> {
     navBarHidden: true,
   };
 
+  private usernameInput: LoginField;
+  private passwordInput: LoginField;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -40,11 +50,19 @@ class LoginScreenComponent extends React.Component<Props, State> {
 
   usernameChanged = username => this.setState({ username });
 
+  usernameReturnPress = () => {
+    this.passwordInput.focus();
+  };
+
   passwordChanged = password => this.setState({ password });
+
+  passwordReturnPress = () => {
+    this.loginPress();
+  };
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.backgroundContainer}>
           <Image
             source={require('src/assets/images/login-background.jpg')}
@@ -53,25 +71,32 @@ class LoginScreenComponent extends React.Component<Props, State> {
         </View>
 
         <LoginField
+          ref={ref => (this.usernameInput = ref)}
+          onSubmitEditing={this.usernameReturnPress}
           value={this.state.username}
           onChangeText={this.usernameChanged}
           placeholder="Username"
           iconName={`${icons.prefix}-person`}
-          isPassword={false}
+          returnKeyType="next"
+          enablesReturnKeyAutomatically
         />
 
         <LoginField
+          ref={ref => (this.passwordInput = ref)}
+          onSubmitEditing={this.passwordReturnPress}
           value={this.state.password}
           onChangeText={this.passwordChanged}
           placeholder="Password"
           iconName={`${icons.prefix}-lock`}
-          isPassword={false}
+          secureTextEntry
+          returnKeyType="go"
+          enablesReturnKeyAutomatically
         />
 
         <View style={styles.buttonContainer}>
           <Button onPress={this.loginPress} title="Log in" />
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -81,7 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'stretch',
-    backgroundColor: '#333',
+    backgroundColor: colors.grayDarker,
   },
 
   backgroundContainer: {

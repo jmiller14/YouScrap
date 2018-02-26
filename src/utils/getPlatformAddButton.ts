@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 
 import { icons } from 'src/components/Icons';
+import { colors } from 'src/vars';
 
 export const getPlatformAddButton = () => {
   if (Platform.OS === 'ios') {
@@ -11,8 +12,8 @@ export const getPlatformAddButton = () => {
     fab: {
       collapsedId: 'add',
       collapsedIcon: icons.addIcon,
-      collapsedIconColor: 'white',
-      backgroundColor: 'red',
+      collapsedIconColor: colors.white,
+      backgroundColor: colors.primary,
     },
   };
 };
