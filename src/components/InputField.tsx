@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, TextInput, TextInputProperties } from 'react-native';
 
 import { colors } from 'src/vars';
+import { font } from 'src/utils/font';
 
 interface Props extends TextInputProperties {}
 
@@ -51,6 +52,6 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
     color: colors.grayDark,
-    fontFamily: 'OfficinaSanITCBoo',
+    ...font(),
   },
 });

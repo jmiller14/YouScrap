@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -13,6 +12,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* youscrapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* youscrapTests.m */; };
+		0B5058A688C34EDB86B2A972 /* FiraSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B20BF3A83F684B93883A2F69 /* FiraSans-Thin.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -22,6 +22,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		18B7657952B6463C9A8D1728 /* FiraSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F887A117B66F493AB95D2685 /* FiraSans-Bold.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -34,23 +35,38 @@
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* youscrapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* youscrapTests.m */; };
+		363282C20F4A4E2BA29310C8 /* FiraSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95288426E2674D13B2C0FAD8 /* FiraSans-MediumItalic.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		62828AB358334F54A40C8EC9 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DE18054C256416EBA2DD8F0 /* MaterialCommunityIcons.ttf */; };
+		7D702C1C1CEF4ACFB63BE8D5 /* FiraSans-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8D785FB30E74720894897ED /* FiraSans-BlackItalic.ttf */; };
 		7DEE709793814AE1B46B34B8 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82E5954A61BA4BEB87E5A415 /* Entypo.ttf */; };
 		7FE2729626DC44D7AD320232 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDCA798099FC44AF8EB91EA4 /* Feather.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8790DF9B83154494AFDE03BF /* FiraSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5782010CB0DE420B9D830E59 /* FiraSans-LightItalic.ttf */; };
 		A1348F7859134D6ABCCC5D96 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A2AE1A7A4DD4FE2BF3C2B1C /* SimpleLineIcons.ttf */; };
+		A1D4E051DADF45EC844DAD80 /* FiraSans-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 861000392A804A3098CE237E /* FiraSans-ExtraLightItalic.ttf */; };
+		A210F68514B640E381071809 /* FiraSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC3E2C3BFF934594A6D71DFD /* FiraSans-Light.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		B1E5E11B626C49E7B4686F6B /* FiraSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04DC13541DA2498DB80E35B9 /* FiraSans-BoldItalic.ttf */; };
 		B6C908AF7E6D4FDD99DBF4B5 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EB250FC8A68448486D9B4A0 /* FontAwesome.ttf */; };
+		B9A4F03DA71A4189B919F894 /* FiraSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B4EED0CB3BF4BC79007CF88 /* FiraSans-Black.ttf */; };
 		BAADF66D740C485D977A678E /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2A67C3711A48A1A27DF766 /* libRNVectorIcons.a */; };
 		C0C6742BAB34459D9CCDE3BB /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87E0EADA53F14F6B8D489802 /* EvilIcons.ttf */; };
+		C586FDA604CC4260AD2BCB60 /* FiraSans-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 235F6A4047874CAE91D72E00 /* FiraSans-RegularItalic.ttf */; };
+		CA34439952764F968F0EEAC8 /* FiraSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81B960FF6427455CBC7C671B /* FiraSans-Regular.ttf */; };
 		CBAF7F01B2ED46FEB22DC214 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7454B110923B42728582B830 /* Octicons.ttf */; };
 		D1291327203373190021C8B9 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1291326203371FE0021C8B9 /* libReactNativeNavigation.a */; };
 		D1BFA201203C831B00665127 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BFA1DA203C831B00665127 /* Ionicons.ttf */; };
+		D5D3698D6B1143448E6161A6 /* FiraSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB30642F914429ADE3FB20 /* FiraSans-SemiBold.ttf */; };
+		D6A6E2BC3D8C4223B958BD17 /* FiraSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 931CA64B5AC84F16B0E428CF /* FiraSans-Medium.ttf */; };
+		D6C055B284354CE7A94410D8 /* FiraSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D648DDAC0F78495E8EC90C3A /* FiraSans-ExtraBold.ttf */; };
+		DF019B9C9DC04CCE82807D62 /* FiraSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B93A4D6E93549329888D99F /* FiraSans-ThinItalic.ttf */; };
 		E046409828AE4FFAA8F5B0B3 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F1DAE34A3E42DB92F082CA /* Zocial.ttf */; };
+		E184BACCA0F84954A6C0B3A1 /* FiraSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88BBC2EAE21043E4B4DD9BAE /* FiraSans-SemiBoldItalic.ttf */; };
 		E76E1623DAF64B96813B5B4E /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BE73CCFCDA4B3F9BD3B253 /* Foundation.ttf */; };
-		ED6FD66CF1314DB6971CBA50 /* OfficinaSanITCBoo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AFE90C3C04B4B878ABACAD2 /* OfficinaSanITCBoo.ttf */; };
+		F248DB43703B4F20BB9F6AFB /* FiraSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B38BC97C0413404C9B002A14 /* FiraSans-ExtraLight.ttf */; };
 		F4F6EE2B4FDA414391E5CE6A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25C4497B44F6461B8F68A9EA /* MaterialIcons.ttf */; };
+		F71E29772F8C4272BC6187B6 /* FiraSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 145853BED3A4456C82B399B5 /* FiraSans-ExtraBoldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -353,8 +369,9 @@
 		00E356EE1AD99517003FC87E /* youscrapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = youscrapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* youscrapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = youscrapTests.m; sourceTree = "<group>"; };
-		0AFE90C3C04B4B878ABACAD2 /* OfficinaSanITCBoo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OfficinaSanITCBoo.ttf; path = ../src/assets/fonts/OfficinaSanITCBoo.ttf; sourceTree = "<group>"; };
+		04DC13541DA2498DB80E35B9 /* FiraSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-BoldItalic.ttf"; path = "../src/assets/fonts/FiraSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		0B2A67C3711A48A1A27DF766 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		0B4EED0CB3BF4BC79007CF88 /* FiraSans-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-Black.ttf"; path = "../src/assets/fonts/FiraSans-Black.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* youscrap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = youscrap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,26 +381,42 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = youscrap/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = youscrap/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = youscrap/main.m; sourceTree = "<group>"; };
+		145853BED3A4456C82B399B5 /* FiraSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/FiraSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1DE18054C256416EBA2DD8F0 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		235F6A4047874CAE91D72E00 /* FiraSans-RegularItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-RegularItalic.ttf"; path = "../src/assets/fonts/FiraSans-RegularItalic.ttf"; sourceTree = "<group>"; };
 		25C4497B44F6461B8F68A9EA /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* youscrap-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "youscrap-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* youscrap-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "youscrap-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F1DAE34A3E42DB92F082CA /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		4A2AE1A7A4DD4FE2BF3C2B1C /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		5782010CB0DE420B9D830E59 /* FiraSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-LightItalic.ttf"; path = "../src/assets/fonts/FiraSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		7454B110923B42728582B830 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7B93A4D6E93549329888D99F /* FiraSans-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-ThinItalic.ttf"; path = "../src/assets/fonts/FiraSans-ThinItalic.ttf"; sourceTree = "<group>"; };
+		7DBB30642F914429ADE3FB20 /* FiraSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-SemiBold.ttf"; path = "../src/assets/fonts/FiraSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		7EB250FC8A68448486D9B4A0 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		81B960FF6427455CBC7C671B /* FiraSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-Regular.ttf"; path = "../src/assets/fonts/FiraSans-Regular.ttf"; sourceTree = "<group>"; };
 		82E5954A61BA4BEB87E5A415 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		861000392A804A3098CE237E /* FiraSans-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-ExtraLightItalic.ttf"; path = "../src/assets/fonts/FiraSans-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		87E0EADA53F14F6B8D489802 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		88BBC2EAE21043E4B4DD9BAE /* FiraSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-SemiBoldItalic.ttf"; path = "../src/assets/fonts/FiraSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		931CA64B5AC84F16B0E428CF /* FiraSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-Medium.ttf"; path = "../src/assets/fonts/FiraSans-Medium.ttf"; sourceTree = "<group>"; };
+		95288426E2674D13B2C0FAD8 /* FiraSans-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-MediumItalic.ttf"; path = "../src/assets/fonts/FiraSans-MediumItalic.ttf"; sourceTree = "<group>"; };
 		A25087A3F6554AED9821B196 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		A5BE73CCFCDA4B3F9BD3B253 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		B20BF3A83F684B93883A2F69 /* FiraSans-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-Thin.ttf"; path = "../src/assets/fonts/FiraSans-Thin.ttf"; sourceTree = "<group>"; };
+		B38BC97C0413404C9B002A14 /* FiraSans-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-ExtraLight.ttf"; path = "../src/assets/fonts/FiraSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		CC3E2C3BFF934594A6D71DFD /* FiraSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-Light.ttf"; path = "../src/assets/fonts/FiraSans-Light.ttf"; sourceTree = "<group>"; };
 		D12912EC203371FE0021C8B9 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		D1BFA1DA203C831B00665127 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		D648DDAC0F78495E8EC90C3A /* FiraSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-ExtraBold.ttf"; path = "../src/assets/fonts/FiraSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D8D785FB30E74720894897ED /* FiraSans-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-BlackItalic.ttf"; path = "../src/assets/fonts/FiraSans-BlackItalic.ttf"; sourceTree = "<group>"; };
+		F887A117B66F493AB95D2685 /* FiraSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraSans-Bold.ttf"; path = "../src/assets/fonts/FiraSans-Bold.ttf"; sourceTree = "<group>"; };
 		FDCA798099FC44AF8EB91EA4 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -665,7 +698,24 @@
 				7454B110923B42728582B830 /* Octicons.ttf */,
 				4A2AE1A7A4DD4FE2BF3C2B1C /* SimpleLineIcons.ttf */,
 				41F1DAE34A3E42DB92F082CA /* Zocial.ttf */,
-				0AFE90C3C04B4B878ABACAD2 /* OfficinaSanITCBoo.ttf */,
+				0B4EED0CB3BF4BC79007CF88 /* FiraSans-Black.ttf */,
+				D8D785FB30E74720894897ED /* FiraSans-BlackItalic.ttf */,
+				F887A117B66F493AB95D2685 /* FiraSans-Bold.ttf */,
+				04DC13541DA2498DB80E35B9 /* FiraSans-BoldItalic.ttf */,
+				D648DDAC0F78495E8EC90C3A /* FiraSans-ExtraBold.ttf */,
+				145853BED3A4456C82B399B5 /* FiraSans-ExtraBoldItalic.ttf */,
+				B38BC97C0413404C9B002A14 /* FiraSans-ExtraLight.ttf */,
+				861000392A804A3098CE237E /* FiraSans-ExtraLightItalic.ttf */,
+				CC3E2C3BFF934594A6D71DFD /* FiraSans-Light.ttf */,
+				5782010CB0DE420B9D830E59 /* FiraSans-LightItalic.ttf */,
+				931CA64B5AC84F16B0E428CF /* FiraSans-Medium.ttf */,
+				95288426E2674D13B2C0FAD8 /* FiraSans-MediumItalic.ttf */,
+				81B960FF6427455CBC7C671B /* FiraSans-Regular.ttf */,
+				235F6A4047874CAE91D72E00 /* FiraSans-RegularItalic.ttf */,
+				7DBB30642F914429ADE3FB20 /* FiraSans-SemiBold.ttf */,
+				88BBC2EAE21043E4B4DD9BAE /* FiraSans-SemiBoldItalic.ttf */,
+				B20BF3A83F684B93883A2F69 /* FiraSans-Thin.ttf */,
+				7B93A4D6E93549329888D99F /* FiraSans-ThinItalic.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1173,7 +1223,24 @@
 				CBAF7F01B2ED46FEB22DC214 /* Octicons.ttf in Resources */,
 				A1348F7859134D6ABCCC5D96 /* SimpleLineIcons.ttf in Resources */,
 				E046409828AE4FFAA8F5B0B3 /* Zocial.ttf in Resources */,
-				ED6FD66CF1314DB6971CBA50 /* OfficinaSanITCBoo.ttf in Resources */,
+				B9A4F03DA71A4189B919F894 /* FiraSans-Black.ttf in Resources */,
+				7D702C1C1CEF4ACFB63BE8D5 /* FiraSans-BlackItalic.ttf in Resources */,
+				18B7657952B6463C9A8D1728 /* FiraSans-Bold.ttf in Resources */,
+				B1E5E11B626C49E7B4686F6B /* FiraSans-BoldItalic.ttf in Resources */,
+				D6C055B284354CE7A94410D8 /* FiraSans-ExtraBold.ttf in Resources */,
+				F71E29772F8C4272BC6187B6 /* FiraSans-ExtraBoldItalic.ttf in Resources */,
+				F248DB43703B4F20BB9F6AFB /* FiraSans-ExtraLight.ttf in Resources */,
+				A1D4E051DADF45EC844DAD80 /* FiraSans-ExtraLightItalic.ttf in Resources */,
+				A210F68514B640E381071809 /* FiraSans-Light.ttf in Resources */,
+				8790DF9B83154494AFDE03BF /* FiraSans-LightItalic.ttf in Resources */,
+				D6A6E2BC3D8C4223B958BD17 /* FiraSans-Medium.ttf in Resources */,
+				363282C20F4A4E2BA29310C8 /* FiraSans-MediumItalic.ttf in Resources */,
+				CA34439952764F968F0EEAC8 /* FiraSans-Regular.ttf in Resources */,
+				C586FDA604CC4260AD2BCB60 /* FiraSans-RegularItalic.ttf in Resources */,
+				D5D3698D6B1143448E6161A6 /* FiraSans-SemiBold.ttf in Resources */,
+				E184BACCA0F84954A6C0B3A1 /* FiraSans-SemiBoldItalic.ttf in Resources */,
+				0B5058A688C34EDB86B2A972 /* FiraSans-Thin.ttf in Resources */,
+				DF019B9C9DC04CCE82807D62 /* FiraSans-ThinItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

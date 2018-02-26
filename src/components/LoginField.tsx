@@ -3,6 +3,7 @@ import { StyleSheet, View, TextInput, TextInputProperties } from 'react-native';
 import * as Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { colors } from 'src/vars';
+import { font } from 'src/utils/font';
 
 const Icon = Ionicons.default;
 
@@ -76,6 +77,6 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
     color: colors.grayDark,
-    fontFamily: 'OfficinaSanITCBoo',
+    ...font(),
   },
 });

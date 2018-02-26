@@ -40,28 +40,38 @@ export class App extends React.Component<Props> {
     const INITIAL_ANIMATION_TYPE = Platform.OS === 'ios' ? 'none' : 'fade';
 
     if (isLoggedIn) {
-      Navigation.startSingleScreenApp({
-        screen: {
-          screen: 'youscrap.MainScreen',
-          titleImage: icons.whiteBookIcon, // iOS only
-          title: 'Home',
-          navigatorButtons: {
-            ...getPlatformAddButton(),
-            leftButtons: [{ title: 'Log out', id: 'cancel' }],
-          },
-          ...Platform.select({
-            // on Android, we fake the title image by drawing it under the navbar
-            android: {
-              navigatorStyle: {
-                drawUnderNavBar: true,
-                navBarTransparent: true,
-                navBarBackgroundColor: 'transparent',
-                navBarTextColor: 'transparent',
-              },
+      Navigation.startTabBasedApp({
+        tabs: [
+          {
+            label: 'Dashboard',
+            icon: icons.addIcon,
+            screen: 'youscrap.MainScreen',
+            titleImage: icons.whiteBookIcon, // iOS only
+            title: 'Home',
+            navigatorButtons: {
+              ...getPlatformAddButton(),
+              leftButtons: [{ title: 'Log out', id: 'cancel' }],
             },
-          }),
-        },
-        animationType: isInitialStart ? INITIAL_ANIMATION_TYPE : 'slide-down',
+            ...Platform.select({
+              // on Android, we fake the title image by drawing it under the navbar
+              android: {
+                navigatorStyle: {
+                  drawUnderNavBar: true,
+                  navBarTransparent: true,
+                  navBarBackgroundColor: 'transparent',
+                  navBarTextColor: 'transparent',
+                },
+              },
+            }),
+          },
+
+          {
+            label: 'Fonts',
+            icon: icons.whiteBookIcon,
+            screen: 'youscrap.FontScreen',
+            title: 'Fonts',
+          },
+        ],
       });
     } else {
       Navigation.startSingleScreenApp({

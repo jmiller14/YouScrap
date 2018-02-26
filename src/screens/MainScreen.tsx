@@ -64,7 +64,7 @@ class MainScreenComponent extends React.Component<Props, ComponentState> {
           isCreateBookModalVisible: true,
           createBookTitle: '',
         });
-        this.modalInput.focus();
+        // this.modalInput.focus();
       }
 
       if (event.id === 'cancel') {

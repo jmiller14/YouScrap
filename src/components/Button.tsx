@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import { colors } from 'src/vars';
+import { font } from 'src/utils/font';
 
 const Touchable =
   Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
 
   buttonText: {
     color: colors.white,
-    fontFamily: 'OfficinaSanITCBoo',
+    ...font(),
     fontSize: 18,
   },
 });
