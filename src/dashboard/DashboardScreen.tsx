@@ -4,22 +4,25 @@ import { Navigator } from 'react-native-navigation';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import * as Ionicons from 'react-native-vector-icons/Ionicons';
-import reactNativeModal from 'react-native-modal';
 
+import { ModalDisplay } from 'src/components/modal/ModalDisplay';
 import { Action } from 'src/store/root';
 import { State } from 'src/store/state';
 import { logOut } from 'src/store/account/actions';
 import { addBook } from 'src/store/books/actions';
+import { openModal, OpenModalAction } from 'src/components/modal/actions';
 import { Book } from 'src/store/books/Book';
 import { BookListItem } from 'src/components/BookListItem';
 import { Text } from 'src/components/Text';
 import { InputField } from 'src/components/InputField';
 import { Button } from 'src/components/Button';
+import { Modal } from 'src/components/Modal';
 import { colors, HAIRLINE_WIDTH } from 'src/vars';
 import { navigatorStyle } from 'src/styles/navigator';
 
+import { CreateBookModalProps } from './CreateBookModal';
+
 const Icon = Ionicons.default;
-const Modal = reactNativeModal;
 
 type Props = {
   isLoading: boolean;
@@ -27,6 +30,7 @@ type Props = {
   navigator: Navigator;
   addBook: (title: string) => Action;
   logOut: () => Action;
+  openCreateBookModal: (props: CreateBookModalProps) => OpenModalAction;
 };
 
 type ComponentState = {
@@ -36,7 +40,7 @@ type ComponentState = {
 
 const ANDROID_NAVBAR_HEIGHT = 56;
 
-class MainScreenComponent extends React.Component<Props, ComponentState> {
+class DashboardScreenComponent extends React.Component<Props, ComponentState> {
   static navigatorStyle = navigatorStyle;
 
   private listInfo = { shouldAnimate: false };
@@ -60,11 +64,7 @@ class MainScreenComponent extends React.Component<Props, ComponentState> {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
         this.listInfo.shouldAnimate = true;
-        this.setState({
-          isCreateBookModalVisible: true,
-          createBookTitle: '',
-        });
-        // this.modalInput.focus();
+        this.props.openCreateBookModal({ addBook: this.props.addBook });
       }
 
       if (event.id === 'cancel') {
@@ -82,13 +82,14 @@ class MainScreenComponent extends React.Component<Props, ComponentState> {
 
   createBookModalCreatePress = () => {
     if (this.state.createBookTitle.length) {
-      this.props.addBook(this.state.createBookTitle);
-      this.setState({
-        isCreateBookModalVisible: false,
-        createBookTitle: '',
-      });
+      this.setState({ isCreateBookModalVisible: false });
     }
   };
+
+  addBook = () => {
+    this.props.addBook(this.state.createBookTitle);
+    this.setState({ createBookTitle: '' });
+  }
 
   createBookTitleChanged = createBookTitle =>
     this.setState({ ...this.state, createBookTitle });
@@ -127,36 +128,36 @@ class MainScreenComponent extends React.Component<Props, ComponentState> {
           keyExtractor={this.bookListKeyExtractor}
         />
 
-        <Modal isVisible={this.state.isCreateBookModalVisible} avoidKeyboard>
-          <View style={styles.modalContainer}>
-            <Text style={styles.modalText}>Name your new scrapbook.</Text>
+        <Modal isOpen={this.state.isCreateBookModalVisible}>
+          <Text style={styles.modalText}>Name your new scrapbook.</Text>
 
-            <InputField
-              ref={ref => (this.modalInput = ref)}
-              style={styles.modalInput}
-              placeholder="Title"
-              onSubmitEditing={this.createBookModalCreatePress}
-              value={this.state.createBookTitle}
-              onChangeText={this.createBookTitleChanged}
-              returnKeyType="done"
-              enablesReturnKeyAutomatically
+          <InputField
+            ref={ref => (this.modalInput = ref)}
+            style={styles.modalInput}
+            placeholder="Title"
+            onSubmitEditing={this.createBookModalCreatePress}
+            value={this.state.createBookTitle}
+            onChangeText={this.createBookTitleChanged}
+            returnKeyType="done"
+            enablesReturnKeyAutomatically
+          />
+
+          <View style={styles.modalButtonContainer}>
+            <Button
+              style={styles.modalCancelButton}
+              title="Cancel"
+              onPress={this.createBookModalCancelPress}
             />
 
-            <View style={styles.modalButtonContainer}>
-              <Button
-                style={styles.modalCancelButton}
-                title="Cancel"
-                onPress={this.createBookModalCancelPress}
-              />
-
-              <Button
-                style={styles.modalCreateButton}
-                title="Create"
-                onPress={this.createBookModalCreatePress}
-              />
-            </View>
+            <Button
+              style={styles.modalCreateButton}
+              title="Create"
+              onPress={this.createBookModalCreatePress}
+            />
           </View>
         </Modal>
+
+        <ModalDisplay />
       </View>
     );
   }
@@ -195,11 +196,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  modalContainer: {
-    padding: 10,
-    backgroundColor: colors.white,
-  },
-
   modalText: {
     fontSize: 16,
     textAlign: 'center',
@@ -226,7 +222,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const MainScreen = connect(
+export const DashboardScreen = connect(
   (state: State) => ({
     isLoading: state.books.isLoading,
     books: state.books.collection,
@@ -235,5 +231,6 @@ export const MainScreen = connect(
   (dispatch: Dispatch<Action>) => ({
     addBook: (title: string) => dispatch(addBook(title)),
     logOut: () => dispatch(logOut()),
+    openCreateBookModal: (props: CreateBookModalProps) => dispatch(openModal('CREATE_BOOK', props)),
   }),
-)(MainScreenComponent);
+)(DashboardScreenComponent);

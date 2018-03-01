@@ -45,7 +45,7 @@ export class App extends React.Component<Props> {
           {
             label: 'Dashboard',
             icon: icons.addIcon,
-            screen: 'youscrap.MainScreen',
+            screen: 'youscrap.DashboardScreen',
             titleImage: icons.whiteBookIcon, // iOS only
             title: 'Home',
             navigatorButtons: {

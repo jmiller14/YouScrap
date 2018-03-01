@@ -3,6 +3,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "experimentalDecorators": true,
+    "paths": {
+      "*": [
+        "*",
+        "*.ios",
+        "*.android",
+      ],
+    },
   },
   "exclude": ["src/**/__tests__/*"]
 }

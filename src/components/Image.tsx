@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 interface Props extends ImageProperties {
-  duration?: number;
+  fadeDuration?: number;
 }
 
 const DEFAULT_DURATION = 300;
@@ -30,17 +30,18 @@ export class Image extends React.Component<Props> {
 
     Animated.timing(this.opacity, {
       toValue: 1,
-      duration: this.props.duration || DEFAULT_DURATION,
+      duration: this.props.fadeDuration || DEFAULT_DURATION,
       useNativeDriver: true,
     }).start();
   };
 
   render() {
-    const { style, duration, ...attributes } = this.props;
+    const { style, fadeDuration, ...attributes } = this.props;
 
     return (
       <Animated.Image
         style={[style, { opacity: this.opacity }]}
+        fadeDuration={0}
         onLoad={this.onLoad}
         {...attributes}
       >

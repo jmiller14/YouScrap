@@ -3,9 +3,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   View,
-  TextInputStatic,
 } from 'react-native';
-import * as Ionicons from 'react-native-vector-icons/Ionicons';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
@@ -16,8 +14,6 @@ import { Image } from 'src/components/Image';
 import { icons } from 'src/components/Icons';
 import { logIn } from 'src/store/account/actions';
 import { colors } from 'src/vars';
-
-const Icon = Ionicons.default;
 
 type Props = {
   logIn: (username: string, password: string) => Action;

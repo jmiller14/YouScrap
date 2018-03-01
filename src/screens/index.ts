@@ -1,21 +1,21 @@
 import { Navigation } from 'react-native-navigation';
 
-import { MainScreen } from './MainScreen';
-import { BookDetailsScreen } from './BookDetailsScreen';
-import { LoginScreen } from './LoginScreen';
-import { FontScreen } from './FontScreen';
+import { DashboardScreen } from 'src/dashboard/DashboardScreen';
+import { DetailsScreen } from 'src/dashboard/details/DetailsScreen';
+import { LoginScreen } from 'src/login/LoginScreen';
+import { FontScreen } from 'src/font/FontScreen';
 
 export function registerScreens(store: {}, Provider: {}) {
   Navigation.registerComponent(
-    'youscrap.MainScreen',
-    () => MainScreen,
+    'youscrap.DashboardScreen',
+    () => DashboardScreen,
     store,
     Provider,
   );
 
   Navigation.registerComponent(
-    'youscrap.BookDetailsScreen',
-    () => BookDetailsScreen,
+    'youscrap.DetailsScreen',
+    () => DetailsScreen,
     store,
     Provider,
   );

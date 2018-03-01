@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Platform, StyleSheet, View, Animated } from 'react-native';
 import { Navigator } from 'react-native-navigation';
 
-import { colors, HAIRLINE_WIDTH } from 'src/vars';
+import { colors } from 'src/vars';
 import { Text } from 'src/components/Text';
 import { Button } from 'src/components/Button';
 import { Book } from 'src/store/books/Book';
@@ -17,7 +17,6 @@ type Props = {
 };
 
 const ANIMATION_DURATION = 300;
-const ITEM_PADDING = 10;
 
 export class BookListItem extends React.Component<Props> {
   private animated: Animated.Value;
@@ -62,7 +61,7 @@ export class BookListItem extends React.Component<Props> {
     }); */
 
     this.props.navigator.push({
-      screen: 'youscrap.BookDetailsScreen',
+      screen: 'youscrap.DetailsScreen',
       title: 'Details',
       passProps: { book: this.props.book },
       navigatorButtons: getPlatformAddButton(),

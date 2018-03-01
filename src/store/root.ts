@@ -4,6 +4,7 @@ import { combineEpics, Epic } from 'redux-observable';
 import { accountReducer } from './account/reducer';
 import { booksReducer } from './books/reducer';
 import { badgesReducer } from './badges/reducer';
+import { modalReducer } from 'src/components/modal/reducer';
 import { logInEpic, logOutEpic } from './account/epics';
 import { addBookEpic, addItemToBookEpic } from './books/epics';
 import { addBadgeEpic } from './badges/epics';
@@ -18,6 +19,7 @@ export const rootReducer = combineReducers<State>({
   account: accountReducer,
   books: booksReducer,
   badges: badgesReducer,
+  modal: modalReducer,
 });
 
 export const rootEpic = combineEpics(

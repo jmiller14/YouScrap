@@ -28,7 +28,7 @@ type ComponentState = {
   height: number;
 };
 
-class BookDetailsScreenComponent extends React.Component<
+class DetailsScreenComponent extends React.Component<
   Props,
   ComponentState
 > {
@@ -85,6 +85,7 @@ class BookDetailsScreenComponent extends React.Component<
           >
             <Image
               source={{ uri: item.imageUri }}
+              blurRadius={10}
               style={{
                 resizeMode: 'cover',
                 width: width / itemsPerRow,
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const BookDetailsScreen = connect(
+export const DetailsScreen = connect(
   (state: State, ownProps: Props) => ({
     book: state.books.collection.find(book => book.id === ownProps.book.id),
   }),
@@ -170,4 +171,4 @@ export const BookDetailsScreen = connect(
     addItemToBook: (imageUri: string) =>
       dispatch(addItemToBook(ownProps.book.id, imageUri)),
   }),
-)(BookDetailsScreenComponent);
+)(DetailsScreenComponent);
